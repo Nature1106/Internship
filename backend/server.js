@@ -9,7 +9,7 @@ require('dotenv').config();
 
 // connection to DB and cloudinary
 const { connectDB } = require('./config/database');
-const { cloudinaryConnect } = require('./config/cloudinary');
+// const { cloudinaryConnect } = require('./config/cloudinary');
 
 // routes
 const userRoutes = require('./routes/user');
@@ -23,7 +23,7 @@ app.use(express.json()); // to parse json body
 app.use(cookieParser());
 app.use(
     cors({
-        // origin: 'http://localhost:5173', // frontend link
+        origin: 'http://localhost:5173', // frontend link
         origin: "*",
         credentials: true
     })
@@ -44,7 +44,7 @@ app.listen(PORT, () => {
 
 // connections
 connectDB();
-cloudinaryConnect();
+// cloudinaryConnect();
 
 // mount route
 app.use('/api/v1/auth', userRoutes);
